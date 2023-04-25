@@ -102,7 +102,7 @@ def lambda_handler(event, context):
 
     #lähettää webhookit discord-palvelimelle
 
-    webhook = SyncWebhook.from_url('https://discordapp.com/api/webhooks/1100039135676342332/I6ivWE3OvqohE3DCsCKAptcHU2VxCWxLkhYrcXMjGLQVbwf3OeZV73G6MWJNMWMh8i0Y')
+    webhook = SyncWebhook.from_url('WEBHOOK TÄHÄN')
     webhook.send(content=alkuviesti)
     webhook.send(content=indeksidiscord)
     webhook.send(content=kempowerdiscord)
