@@ -71,5 +71,5 @@ Eli: Silloin kun asetat ohjelman AWS-lambdaan, poista def lambda_handler-rivilt�
 kuitenkin muuttamalla koodin takaisin tilaan, jossa def lambda_handler-rivi on kommentoitu ja if 1==1-rivi ei koodi toimii taas normaalisti AWS Lambdan ulkopuolella.
 
 
-Ohjelma käyttää toimiakseen pääosin (https://pypi.org/project/yfinance/ "YFinance")- ja (
-https://pypi.org/project/discord.py/ "Discord.py")-kirjastoja.
+Ohjelma käyttää toimiakseen pääosin [YFinance](https://pypi.org/project/yfinance/) ja [Discord.py](
+https://pypi.org/project/discord.py/)-kirjastoja.
