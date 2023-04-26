@@ -22,7 +22,7 @@ Esimerkkirivit ovat seuraavanlaisia:
 sijoitus6discord = "Valmet:    "+"Hinta:"+str(sijoitus6nyt)[:6]+"€ "+sijoitus6_arrow+"   {:.2%}\n".format(sijoitus6_percent)
 sijoitus7discord = "Elisa:    "+"Hinta:"+str(sijoitus7nyt)[:6]+"€ "+sijoitus7_arrow+"   {:.2%}\n".format(sijoitus7_percent)
 sijoitus8discord = "Energia-ETF:    "+"Hinta:"+str(sijoitus8nyt)[:6]+"€"+sijoitus8_arrow+"   {:.2%}\n".format(sijoitus8_percent)
-#sijoitus9discord = "<OSAKKEESI NIMI>:    "+"Hinta:"+str(sijoitus9nyt)[:6]+"<VALUUTTAMERKKI>"+sijoitus9_arrow+"   {:.2%}\n".format(sijoitus9_percent)
+#sijoitus9discord = "<SIJOITUSKOHTEESI NIMI>:    "+"Hinta:"+str(sijoitus9nyt)[:6]+"<VALUUTTAMERKKI>"+sijoitus9_arrow+"   {:.2%}\n".format(sijoitus9_percent)
 ``` 
 
 Eli, sinun on muutettava jokainen isoilla kirjaimilla <>-symbolien sisälle kirjoitettu teksti. Muista poistaa <>-merkit!
