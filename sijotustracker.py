@@ -25,7 +25,7 @@ sijoitus5=yfinance.Ticker('FIA1S.HE')
 sijoitus6=yfinance.Ticker('VALMT.HE')
 sijoitus7=yfinance.Ticker('ELISA.HE')
 sijoitus8=yfinance.Ticker('XDW0.DE')
-
+#sijoitus9nyt = hintanyt('<YAHOOFINANCETICKERTÄHÄN>') # Sijoitus9 on esimerkkipohja, joka ohjeistaa, miten lisätä omia osakkeita. Sen jälkeen kun olet määrittänyt kaikki vaaditut arvot (löytyy README-tiedoston käyttö-osioista), poista #-merkki kaikkien esimerkkipohjarivien aluista, jotta rivit eivät ole enää kommentteina, vaan python suorittaa ne.
 
 
 sijoitus1nyt = 0
@@ -36,6 +36,8 @@ sijoitus5nyt = 0
 sijoitus6nyt = 0
 sijoitus7nyt = 0
 sijoitus8nyt = 0
+#sijoitus9nyt = 0 # tätä ei kannata eikä tarvitse muuttaa. Tämän tarkoitus on vaan, että muuttujalle on suoritettu "declaration". Arvo voisi olla mikä tahansa tasaluku, mutta se ei muuttaisi koodin toimintaa mitenkään.
+
 
 def hintanyt(symbol): # EI TOIMI RAHASTOILLA KOSKA NIILLÄ EI OLE "ARVOA"
     ticker = yfinance.Ticker(symbol)
@@ -49,7 +51,7 @@ sijoitus5nyt = hintanyt('FIA1S.HE')
 sijoitus6nyt = hintanyt('VALMT.HE')
 sijoitus7nyt = hintanyt('ELISA.HE')
 sijoitus8nyt = hintanyt('XDW0.DE')
-
+#sijoitus9nyt = hintanyt('<YAHOOFINANCETICKERTÄHÄN>') # Laita tähänkin osakkeesi yahoo finance-ticker.
 
 
 
@@ -102,11 +104,17 @@ if 1 == 1:   ### JOS KÄYTÄT TÄTÄ LAMBDAN ULKOPUOLELLA, POISTA TÄMÄN RIVIN 
     if sijoitus7_percent < 0:
         sijoitus7_arrow = ":arrow_down:"
 
-    # --- SIJOITUSKOHDE - ESIMERKISSÄ sijoitus8 Xtrackers MSCI World Energy UCITS ---
+    # --- SIJOITUSKOHDE 8 - ESIMERKISSÄ sijoitus8 Xtrackers MSCI World Energy UCITS ---
     sijoitus8_percent = 1 - (sijoitus8.fast_info['previousClose'] / sijoitus8.fast_info['lastPrice'])
     sijoitus8_arrow = ":arrow_up:"
     if sijoitus8_percent < 0:
         sijoitus8_arrow = ":arrow_down:"
+
+    # --- SIJOITUSKOHDE 9 - ESIMERKKIPOHJA, Tätä ei tarvitse muuttaa ollenkaan. ---
+    #sijoitus9_percent = 1 - (sijoitus9.fast_info['previousClose'] / sijoitus9.fast_info['lastPrice'])
+    #sijoitus9_arrow = ":arrow_up:"
+    #if sijoitus9_percent < 0:
+    #    sijoitus9_arrow = ":arrow_down:"
 
     # "kasaa" webhook-viestit osakkeiden tiedoista.
     sijoitus1discord = "Kempower:    "+"Hinta:"+str(sijoitus1nyt)[:6]+"€ "+sijoitus1_arrow+"   {:.2%}\n".format(sijoitus1_percent)
@@ -117,22 +125,14 @@ if 1 == 1:   ### JOS KÄYTÄT TÄTÄ LAMBDAN ULKOPUOLELLA, POISTA TÄMÄN RIVIN 
     sijoitus6discord = "Valmet:    "+"Hinta:"+str(sijoitus6nyt)[:6]+"€ "+sijoitus6_arrow+"   {:.2%}\n".format(sijoitus6_percent)
     sijoitus7discord = "Elisa:    "+"Hinta:"+str(sijoitus7nyt)[:6]+"€ "+sijoitus7_arrow+"   {:.2%}\n".format(sijoitus7_percent)
     sijoitus8discord = "Energia-ETF:    "+"Hinta:"+str(sijoitus8nyt)[:6]+"€"+sijoitus8_arrow+"   {:.2%}\n".format(sijoitus8_percent)
+    #sijoitus9discord = "<SIJOITUSKOHTEEN NIMI>:    "+"Hinta:"+str(sijoitus9nyt)[:6]+"<VALUUTTAMERKKI>"+sijoitus9_arrow+"   {:.2%}\n".format(sijoitus8_percent)
 
-    yksiviesti = alkuviesti+sijoitus1discord+sijoitus2discord+sijoitus3discord+sijoitus4discord+sijoitus5discord+sijoitus6discord+sijoitus7discord+sijoitus8discord
+    yksiviesti = alkuviesti+sijoitus1discord+sijoitus2discord+sijoitus3discord+sijoitus4discord+sijoitus5discord+sijoitus6discord+sijoitus7discord+sijoitus8discord#+sijoitus9discord
 
-
+    ### HUOMIO! ### Jos aiot käyttää esimerkkipohjaa, muista poistaa # sijoitus8discordin ja sijoitus9discordin välistä ylempänä.
 
 
     #lähettää webhookit discord-palvelimelle
 
-    webhook = SyncWebhook.from_url('https://discordapp.com/api/webhooks/1100039135676342332/I6ivWE3OvqohE3DCsCKAptcHU2VxCWxLkhYrcXMjGLQVbwf3OeZV73G6MWJNMWMh8i0Y')
-    #webhook.send(content=alkuviesti)
-    #webhook.send(content=sijoitus1discord)
-    #webhook.send(content=sijoitus2discord)
-    #webhook.send(content=sijoitus3discord)
-    #webhook.send(content=sijoitus4discord)
-    #webhook.send(content=sijoitus5discord)
-    #webhook.send(content=sijoitus6discord)
-    #webhook.send(content=sijoitus7discord)
-    #webhook.send(content=sijoitus8discord)
+    webhook = SyncWebhook.from_url('WEBHOOK TÄHÄN')
     webhook.send(content=yksiviesti)
