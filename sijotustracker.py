@@ -15,8 +15,6 @@ import requests
 from discord import SyncWebhook
 
 import yfinance
-nordeanyt = 1
-nordeanytstring = 1
 
 # Asettaa pörssiosakkeen YAHOO FINANCE-tickerin (jos haluat lisätä omia osakkeita, hae kyseistä osaketta sivulta finance.yahoo.com ja kopioi koodi.)
 kem=yfinance.Ticker('KEMPOWR.HE')
@@ -29,14 +27,37 @@ elisa=yfinance.Ticker('ELISA.HE')
 energiaetf=yfinance.Ticker('XDW0.DE')
 
 
-# Luo funktion, jonka avulla ohjelma voi ilmoittaa tämänhetkisen hinnan - EI TOIMI VIELÄ, TODO
-#def hintanyt(symbol):
-#    ticker = yfinance.Ticker(symbol)
-#    todays_data = ticker.history(period='1d')
-#    return todays_data['Close'][0]
-#print(hintanyt('FIA1S.HE'))
+finnairnyt = 0
+indeksinyt = 0
+kempowernyt = 0
+vikingnyt = 0
+nordeanyt = 0
+valmetnyt = 0
+elisanyt = 0
+energiaetfnyt = 0
 
-def lambda_handler(event, context):
+def hintanyt(symbol): # EI TOIMI RAHASTOILLA KOSKA NIILLÄ EI OLE "ARVOA"
+    ticker = yfinance.Ticker(symbol)
+    todays_data = ticker.history(period='1d')
+    return todays_data['Close'][0]
+kempowernyt = hintanyt('KEMPOWR.HE')
+#indeksinyt = hintanyt('0P000134K9.F')
+vikingnyt = hintanyt('VIK1V.HE')
+nordeanyt = hintanyt('NDA-FI.HE')
+finnairnyt = hintanyt('FIA1S.HE')
+valmetnyt = hintanyt('VALMT.HE')
+elisanyt = hintanyt('ELISA.HE')
+energiaetfnyt = hintanyt('XDW0.DE')
+
+
+
+
+#def lambda_handler(event, context):  ### TÄMÄ RIVI KOODIA MAHDOLLISTAA OHJELMAN TOIMIMISEN AWS LAMBDASSA - LAMBDAN ULKOPUOLELLA KÄYTTÄESSÄ MUUTA AINA TÄMÄ RIVI KOMMENTIKSI #:N AVULLA
+
+if 1 == 1:   ### JOS KÄYTÄT TÄTÄ LAMBDAN ULKOPUOLELLA, POISTA TÄMÄN RIVIN ENSIMMÄINEN #. NIMITTÄIN PYTHONISSA SISENNYKSILLÄ ON VÄLIÄ!
+
+    alkuviesti = "--- Sijoitusten arvon muutos viime päivän ajalta: ---\n"
+
     # --- KEMPOWER ---  # Hankitaan tiedot halutuista osakkeista Yahoo Financen kautta (ja tehdään sama homma muille osakkeille)
     kempower_percent = 1 - (kem.fast_info['previousClose'] / kem.fast_info['lastPrice'])
     kempower_arrow = ":arrow_up:"
@@ -88,27 +109,31 @@ def lambda_handler(event, context):
 
     # "kasaa" webhook-viestit osakkeiden tiedoista.
     indeksidiscord = "Nordnet Indeksi Helsinki:   "+indeksi_arrow+"   {:.2%}\n".format(indeksi_percent)
-    kempowerdiscord = "Kempower:    "+kempower_arrow+"   {:.2%}\n".format(kempower_percent)
-    vikingdiscord = "Viking Line:    "+viking_arrow+"   {:.2%}\n".format(viking_percent)
-    nordeadiscord = "Nordea:    "+nordea_arrow+"   {:.2%}\n".format(nordea_percent)
-    finnairdiscord = "Finnair:    "+finnair_arrow+"   {:.2%}\n".format(finnair_percent)
-    valmetdiscord = "Valmet:    "+valmet_arrow+"   {:.2%}\n".format(valmet_percent)
-    elisadiscord = "Elisa:    "+elisa_arrow+"   {:.2%}\n".format(elisa_percent)
-    energiaetfdiscord = "Energia-ETF (Xtrackers MSCI World Energy UCITS):    "+energiaetf_arrow+"   {:.2%}\n".format(energiaetf_percent)
+    kempowerdiscord = "Kempower:    "+"Hinta:"+str(kempowernyt)[:6]+"€ "+kempower_arrow+"   {:.2%}\n".format(kempower_percent)
+    vikingdiscord = "Viking Line:    "+"Hinta:"+str(vikingnyt)[:6]+"€ "+viking_arrow+"   {:.2%}\n".format(viking_percent)
+    nordeadiscord = "Nordea:    "+"Hinta:"+str(nordeanyt)[:6]+"€ "+nordea_arrow+"   {:.2%}\n".format(nordea_percent)
+    finnairdiscord = "Finnair:    "+"Hinta:"+str(finnairnyt)[:6]+"€ "+finnair_arrow+"   {:.2%}\n".format(finnair_percent)
+    valmetdiscord = "Valmet:    "+"Hinta:"+str(valmetnyt)[:6]+"€ "+valmet_arrow+"   {:.2%}\n".format(valmet_percent)
+    elisadiscord = "Elisa:    "+"Hinta:"+str(elisanyt)[:6]+"€ "+elisa_arrow+"   {:.2%}\n".format(elisa_percent)
+    energiaetfdiscord = "Energia-ETF:    "+"Hinta:"+str(energiaetfnyt)[:6]+"€"+energiaetf_arrow+"   {:.2%}\n".format(energiaetf_percent)
+
+    #+"Hinta:"+str(energiaetfnyt)[:6]+"€"
+
+    yksiviesti = alkuviesti+indeksidiscord+kempowerdiscord+vikingdiscord+nordeadiscord+finnairdiscord+valmetdiscord+elisadiscord+energiaetfdiscord
 
 
 
-    alkuviesti = "--- Sijoitusten arvon muutos viime päivän ajalta: ---"
 
     #lähettää webhookit discord-palvelimelle
 
-    webhook = SyncWebhook.from_url('WEBHOOK TÄHÄN')
-    webhook.send(content=alkuviesti)
-    webhook.send(content=indeksidiscord)
-    webhook.send(content=kempowerdiscord)
-    webhook.send(content=vikingdiscord)
-    webhook.send(content=nordeadiscord)
-    webhook.send(content=finnairdiscord)
-    webhook.send(content=valmetdiscord)
-    webhook.send(content=elisadiscord)
-    webhook.send(content=energiaetfdiscord)
+    webhook = SyncWebhook.from_url('https://discordapp.com/api/webhooks/1100039135676342332/I6ivWE3OvqohE3DCsCKAptcHU2VxCWxLkhYrcXMjGLQVbwf3OeZV73G6MWJNMWMh8i0Y')
+    #webhook.send(content=alkuviesti)
+    #webhook.send(content=indeksidiscord)
+    #webhook.send(content=kempowerdiscord)
+    #webhook.send(content=vikingdiscord)
+    #webhook.send(content=nordeadiscord)
+    #webhook.send(content=finnairdiscord)
+    #webhook.send(content=valmetdiscord)
+    #webhook.send(content=elisadiscord)
+    #webhook.send(content=energiaetfdiscord)
+    webhook.send(content=yksiviesti)
