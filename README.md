@@ -16,51 +16,31 @@ Tulevia toimintoja:
 
 Tarvitset Pythonin tietokoneellesi ohjelman käyttöä varten, joten lataa uusin python-versio tarvittaessa. Ohjelma on luotu Python 3.10.10:llä, joten suosittelen, että käytät vähintään kyseistä python-versiota tai uudempaa.
 
-Ohjelma on koodattu siten, että se on konfiguroitava koodia muuttamalla. Tässä tekstissä ja koodissa on kommentteja, jotka opastavat koodin käyttöä, ja miten omia sijoituskohteita voi lisätä.
+Ohjelma on koodattu siten, että se on konfiguroitava config.json-tiedostoa muuttamalla tekstinkäsittelyohjelmalla. Tässä tekstissä ja koodissa on kommentteja, jotka opastavat myös itse koodin käyttöä, ja miten omia sijoituskohteita voi lisätä jos sitä haluat tehdä..
 
-Ohjelma EI TOIMI MUUTTAMATTOMANA. Sinun on VÄHINTÄÄN asetettava discord-webhookin osoite, joka on merkitty seuraavalle riville koodin alaosassa:
+Ohjelma EI TOIMI MUUTTAMATTOMANA. Sinun on VÄHINTÄÄN asetettava discord-webhookin osoite, joka on merkitty seuraavalle riville config-tiedostossa.
 ```
 webhook = SyncWebhook.from_url('WEBHOOK TÄHÄN') ### VAIHDA TÄHÄN SINUN DISCORD-WEBHOOKISI URL-OSOITE!
 ```
 
 Silloin, kun olet asettanut webhookin onnistuneesti, koodin suorittuessa sinun pitäisi saada kahdeksan esimerkkisijoitusta lähetettyä Discord-palvelimelle webhookin kautta.
 
-Jotta saat omat sijoituksesi näkymään, voit katsoa mallia esimerkkipohjasta, eli sijoitus9:stä. Muuttamattomana esimerkit näkyvät kommentoituina, eli niillä ei ole mitään vaikutusta koodiin. Jos haluat käyttää niitä, poista #-merkki rivin alusta.
+Jotta saat omat sijoituksesi näkymään, voit vaihtaa config-tiedoston kautta esimerkkisijoitusten yahoo finance-tickerin, nimen ja valuutan oman sijoituksen arvoiksi. Jos haluat yli kahdeksaa sijoitusta lisätä, voit vain kopioida koodista 
 
 
-Esimerkkirivit ovat seuraavanlaisia:
-```
-sijoitus6discord = "Valmet:    "+"Hinta:"+str(sijoitus6nyt)[:6]+"€ "+sijoitus6_arrow+"   {:.2%}\n".format(sijoitus6_percent)
-sijoitus7discord = "Elisa:    "+"Hinta:"+str(sijoitus7nyt)[:6]+"€ "+sijoitus7_arrow+"   {:.2%}\n".format(sijoitus7_percent)
-sijoitus8discord = "Energia-ETF:    "+"Hinta:"+str(sijoitus8nyt)[:6]+"€"+sijoitus8_arrow+"   {:.2%}\n".format(sijoitus8_percent)
-#sijoitus9discord = "<SIJOITUSKOHTEESI NIMI>:    "+"Hinta:"+str(sijoitus9nyt)[:6]+"<VALUUTTAMERKKI>"+sijoitus9_arrow+"   {:.2%}\n".format(sijoitus9_percent)
-``` 
-
-Eli, sinun on muutettava jokainen isoilla kirjaimilla <>-symbolien sisälle kirjoitettu teksti. Muista poistaa <>-merkit!
 Esimerkiksi:
 ```
-#sijoitus9nyt = hintanyt('<YAHOOFINANCETICKERTÄHÄN>')
-```
-olisi muutettava muotoon
-```
-sijoitus9nyt = hintanyt('OUT1V.HE')
+sijoitus8discord = sijoitus8nimi+"Hinta:"+str(sijoitus8nyt)[:6]+sijoitus8valuutta+sijoitus8_arrow+"   {:.2%}\n".format(sijoitus8_percent)
 ``` 
-Jossa siis OUT1V.HE on Yahoo Financen koodi Outokumpu Oyj-osakkeelle. Koodin voi löytää helposti yksinkertaisesti hakemalla osakkeen Yahoo Financesta. 
+muutettaisiin yksinkertaisesti seuraavaksi:
+```
+sijoitus9discord = sijoitus9nimi+"Hinta:"+str(sijoitus9nyt)[:6]+sijoitus9valuutta+sijoitus9_arrow+"   {:.2%}\n".format(sijoitus9_percent)
+``` 
 
-Kaikki määritettävät arvot ovat (ylhäältä alaspäin):
+Sinun on silloin luotava samaan tyyliin myös json-tiedostoon arvot.
 
-Sijoituskohteen Yahoo Finance Ticker <YAHOOFINANCETICKERTÄHÄN> (huom! määritettävä kahdessa eri kohdassa) 
-
-Sijoituskohteen nimi <SIJOITUSKOHTEEN NIMI> - Nimi, jolla osake näkyy discord-viestissä.
-
-Sijoituskohteen rahayksikön merkki <VALUUTTAMERKKI> - rahayksikön symboli, kuten € tai $. Vaihtelee, riippuen mistä pörssistä olet hankkinut sijoituskohteesi. 
-
-SILLOIN KUN OLET VALMIS, POISTA KAIKKIEN ESIMERKKIPOHJARIVIEN KOMMENTOINTI POISTAMALLA #-SYMBOLI KOODIN ALUSTA.
-
-
-Silloin kun olet saanut ohjelmaan asetettua vaikka esimerkkipohjalla ensimmäisen oman sijoituksesi, voit kopioida juuri tekemäsi sijoitus9-muuttujan koodin, mutta vaihda sijoitus9:n sijaan muuttujaksi esimerkiksi sijoitus10 ja asettaa kaikki määritettävät arvot. 
-
-Oletuksena sisälletyt kahdeksan esimerkkisijoitusta eivät ole välttämättömiä ohjelmalle, vaan ne on mahdollista muuttaa tai poistaa kokonaan ilman ongelmia. 
+```
+#sijoitus9nyt = hintanyt('<YAHOOFINANCETICKERTÄHÄN>')
 
 
 
