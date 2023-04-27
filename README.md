@@ -3,8 +3,8 @@ Webhookeilla toimiva python-ohjelma, joka lähettää haluttujen sijoitusten pä
 
 Tällä hetkellä ohjelma näyttää määritetyn sijoituskohteen:
 
--Tämänhetkisen hinnan
--Hinnan muutoksen 24 tunnin ajalta
+- Tämänhetkisen hinnan
+- Hinnan muutoksen 24 tunnin ajalta
 
 
 Tulevia toimintoja:
