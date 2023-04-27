@@ -1,0 +1,28 @@
+ {
+  "webhook" : "WEBHOOKTÄHÄN",
+  "sijoitus1ticker" : "KEMPOWR.HE",
+  "sijoitus1nimi" : "Kempower ",
+  "sijoitus1valuutta" : "€ ",
+  "sijoitus2ticker" : "0P000134K9.F",
+  "sijoitus2nimi" : "Nordea Indeksi Hki ",
+  "sijoitus2valuutta" : "€",
+  "sijoitus3ticker" : "VIK1V.HE",
+  "sijoitus3nimi" : "Viking Line ",
+  "sijoitus3valuutta" : "€",
+  "sijoitus4ticker" : "NDA-FI.HE",
+  "sijoitus4nimi" : "Nordea ",
+  "sijoitus4valuutta" : "€",
+  "sijoitus5ticker" : "FIA1S.HE",
+  "sijoitus5nimi" : "Finnair ",
+  "sijoitus5valuutta" : "€",
+  "sijoitus6ticker" : "VALMT.HE",
+  "sijoitus6nimi" : "Valmet ",
+  "sijoitus6valuutta" : "€",
+  "sijoitus7ticker" : "ELISA.HE",
+  "sijoitus7nimi" : "Elisa ",
+  "sijoitus7valuutta" : "€",
+  "sijoitus8ticker" : "XDW0.DE",
+  "sijoitus8nimi" : "Energia-ETF ",
+  "sijoitus8valuutta" : "€"
+
+}
