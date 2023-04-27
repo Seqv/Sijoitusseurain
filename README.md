@@ -39,10 +39,6 @@ sijoitus9discord = sijoitus9nimi+"Hinta:"+str(sijoitus9nyt)[:6]+sijoitus9valuutt
 
 Sinun on silloin luotava samaan tyyliin myös json-tiedostoon arvot.
 
-```
-#sijoitus9nyt = hintanyt('<YAHOOFINANCETICKERTÄHÄN>')
-
-
 
 # AWS Lambda
 
