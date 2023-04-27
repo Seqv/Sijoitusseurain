@@ -18,9 +18,9 @@ Tarvitset Pythonin tietokoneellesi ohjelman käyttöä varten, joten lataa uusin
 
 Ohjelma on koodattu siten, että se on konfiguroitava config.json-tiedostoa muuttamalla tekstinkäsittelyohjelmalla. Tässä tekstissä ja koodissa on kommentteja, jotka opastavat myös itse koodin käyttöä, ja miten omia sijoituskohteita voi lisätä jos sitä haluat tehdä..
 
-Ohjelma EI TOIMI MUUTTAMATTOMANA. Sinun on VÄHINTÄÄN asetettava discord-webhookin osoite, joka on merkitty seuraavalle riville config-tiedostossa.
+Ohjelma EI TOIMI MUUTTAMATTOMANA. Sinun on VÄHINTÄÄN asetettava discord-webhookin osoite, joka on merkitty config-tiedoston ensimmäiselle riville
 ```
-webhook = SyncWebhook.from_url('WEBHOOK TÄHÄN') ### VAIHDA TÄHÄN SINUN DISCORD-WEBHOOKISI URL-OSOITE!
+"webhook" : "WEBHOOKTÄHÄN",
 ```
 
 Silloin, kun olet asettanut webhookin onnistuneesti, koodin suorittuessa sinun pitäisi saada kahdeksan esimerkkisijoitusta lähetettyä Discord-palvelimelle webhookin kautta.
