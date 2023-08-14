@@ -85,50 +85,50 @@ if 1 == 1:   ### JOS KÄYTÄT TÄTÄ OHJELMAA AWS LAMBDASSA, LISÄÄ TÄMÄN RIV
     alkuviesti = "--- Sijoitusten arvon muutos viime päivän ajalta: ---\n"
 
     # --- SIJOITUSKOHDE 1 - ESIMERKISSÄ KEMPOWER ---  # Hankitaan tiedot halutuista osakkeista Yahoo Financen kautta (ja tehdään sama homma muille osakkeille)
-    sijoitus1_percent = 1 - (sijoitus1.get_fast_info['previousClose'] / sijoitus1.get_fast_info['lastPrice'])
+    sijoitus1_percent = 1 - (sijoitus1.fast_info['previousClose'] / sijoitus1.fast_info['lastPrice'])
     sijoitus1_arrow = ":arrow_up:"
     if sijoitus1_percent < 0:
         sijoitus1_arrow = ":arrow_down:"
 
     # --- SIJOITUSKOHDE 2 - ESIMERKISSÄ NORDNET INDEKSIRAHASTO SUOMI ESG ---
-    sijoitus2_percent = 1 - (sijoitus2.get_fast_info['previousClose'] / sijoitus2.get_fast_info['lastPrice'])
+    sijoitus2_percent = 1 - (sijoitus2.fast_info['previousClose'] / sijoitus2.fast_info['lastPrice'])
     sijoitus2_arrow = ":arrow_up:"
     if sijoitus2_percent < 0:
         sijoitus2_arrow = ":arrow_down:"
 
     # --- SIJOITUSKOHDE 3 - ESIMERKISSÄ VIKING LINE ---
-    sijoitus3_percent = 1 - (sijoitus3.get_fast_info['previousClose'] / sijoitus3.get_fast_info['lastPrice'])
+    sijoitus3_percent = 1 - (sijoitus3.fast_info['previousClose'] / sijoitus3.fast_info['lastPrice'])
     sijoitus3_arrow = ":arrow_up:"
     if sijoitus3_percent < 0:
         sijoitus3_arrow = ":arrow_down:"
 
 
     # --- SIJOITUSKOHDE 4 - ESIMERKISSÄ NORDEA ---
-    sijoitus4_percent = 1 - (sijoitus4.get_fast_info['previousClose'] / sijoitus4.get_fast_info['lastPrice'])
+    sijoitus4_percent = 1 - (sijoitus4.fast_info['previousClose'] / sijoitus4.fast_info['lastPrice'])
     sijoitus4_arrow = ":arrow_up:"
     if sijoitus4_percent < 0:
         sijoitus4_arrow = ":arrow_down:"
 
     # --- SIJOITUSKOHDE 5 - ESIMERKISSÄ FINNAIR ---
-    sijoitus5_percent = 1 - (sijoitus5.get_fast_info['previousClose'] / sijoitus5.get_fast_info['lastPrice'])
+    sijoitus5_percent = 1 - (sijoitus5.fast_info['previousClose'] / sijoitus5.fast_info['lastPrice'])
     sijoitus5_arrow = ":arrow_up:"
     if sijoitus5_percent < 0:
         sijoitus5_arrow = ":arrow_down:"
 
     # --- SIJOITUSKOHDE 6 - ESIMERKISSÄ sijoitus6 ---
-    sijoitus6_percent = 1 - (sijoitus6.get_fast_info['previousClose'] / sijoitus6.get_fast_info['lastPrice'])
+    sijoitus6_percent = 1 - (sijoitus6.fast_info['previousClose'] / sijoitus6.fast_info['lastPrice'])
     sijoitus6_arrow = ":arrow_up:"
     if sijoitus6_percent < 0:
         sijoitus6_arrow = ":arrow_down:"
 
     # --- SIJOITUSKOHDE 7 - ESIMERKISSÄ sijoitus7 ---
-    sijoitus7_percent = 1 - (sijoitus7.get_fast_info['previousClose'] / sijoitus7.get_fast_info['lastPrice'])
+    sijoitus7_percent = 1 - (sijoitus7.fast_info['previousClose'] / sijoitus7.fast_info['lastPrice'])
     sijoitus7_arrow = ":arrow_up:"
     if sijoitus7_percent < 0:
         sijoitus7_arrow = ":arrow_down:"
 
     # --- SIJOITUSKOHDE 8 - ESIMERKISSÄ sijoitus8 Xtrackers MSCI World Energy UCITS ---
-    sijoitus8_percent = 1 - (sijoitus8.get_fast_info['previousClose'] / sijoitus8.get_fast_info['lastPrice'])
+    sijoitus8_percent = 1 - (sijoitus8.fast_info['previousClose'] / sijoitus8.fast_info['lastPrice'])
     sijoitus8_arrow = ":arrow_up:"
     if sijoitus8_percent < 0:
         sijoitus8_arrow = ":arrow_down:"
